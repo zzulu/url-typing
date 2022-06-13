@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Typing</title>
+</head>
+<body>
+  <h1>Nice to meet you :)</h1>
+
+  <script>
+    const text = 'Nice to meet you :)'
+    const charactors = text.replaceAll(' ', '_').split('')
+    
+    const typing = () => {
+      window.location.hash = ''
+      let index = 0
+      const interval = setInterval(() => {
+        window.location.hash += charactors[index++]
+        if (index === charactors.length) {
+          clearInterval(interval);
+          setTimeout(() => {
+            window.location.hash = ''
+            index = 0
+          }, 2000)
+        }
+      }, 100)
+    }
+
+    typing()
+    setInterval(typing, text.length * 100 + 2000)
+    
+  </script>
+</body>
+</html>
